@@ -1,0 +1,42 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeTube Login</title>
+</head>
+<body>
+    <h1>Welcome back to WeTube</h1>
+    <h2>Log in to your account</h2>
+    
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if error %}<p style="color: red;">{{ error }}</p>{% endif %}
+
+        <label>Email:</label><br>
+        <input title="email" type="email" name="email" required><br><br>
+        
+        <label>Password:</label><br>
+        <input title="password" type="password" name="password" required><br><br>
+        
+        <button type="submit">Login with Password</button>
+    </form>
+    
+    <br>
+
+    <a href="{% provider_login_url 'google' %}">
+        <button style="background-color: #4285F4; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">
+            Sign in with Google
+        </button>
+    </a>
+
+    <hr>
+
+    <h3>Other Options</h3>
+    <p>Forgot your password? <a href="{% url 'forgot_password' %}">Reset it here</a></p>
+    <p>Login without password? <a href="{% url 'login_otp' %}">Use Email OTP</a></p>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Python junk files
+__pycache__/
+*.pyc
+
+# Your local database
+db.sqlite3
+
+# Virtual environments (if you made one)
+venv/
+env/

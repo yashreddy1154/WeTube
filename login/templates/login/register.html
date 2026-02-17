@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for WeTube</title>
+</head>
+<body>
+    <h1>Create a WeTube Account</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {% if error %}<p style="color: red;">{{ error }}</p>{% endif %}
+
+        <label>First Name:</label><br>
+        <input title="first name" type="text" name="first_name" required><br><br>
+
+        <label>Last Name:</label><br>
+        <input title="last name"  type="text" name="last_name" required><br><br>
+
+        <label>Date of Birth:</label><br>
+        <input title="date of birth" type="date" name="dob" required><br><br>
+
+        <label>Gender:</label><br>
+        <select title="gender" name="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label>Email Address:</label><br>
+        <input title="email" type="email" name="email" required><br><br>
+        
+        <label>Password:</label><br>
+        <input title="password" type="password" name="password" required><br><br>
+
+        <label>Confirm Password:</label><br>
+        <input title="confirm password" type="password" name="confirm_password" required><br><br>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <a href="{% url 'login' %}">Back to Login</a></p>
+</body>
+</html>

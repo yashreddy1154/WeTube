@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+</head>
+<body>
+    <h1>Update Your Profile</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label>First Name:</label><br>
+        <input title="first name" type="text" name="first_name" value="{{ request.user.first_name }}"><br><br>
+
+        <label>Last Name:</label><br>
+        <input title="last name" type="text" name="last_name" value="{{ request.user.last_name }}"><br><br>
+
+        <label>Date of Birth: (Current: {{ request.user.dob }})</label><br>
+        <input title="date of birth" type="date" name="dob" value="{{ request.user.dob }}"><br><br>
+
+        <label>Gender: (Current: {{ request.user.gender }})</label><br>
+        <select title="gender" name="gender">
+            <option value="Male" {% if request.user.gender == 'Male' %}selected{% endif %}>Male</option>
+            <option value="Female" {% if request.user.gender == 'Female' %}selected{% endif %}>Female</option>
+            <option value="Other" {% if request.user.gender == 'Other' %}selected{% endif %}>Other</option>
+        </select><br><br>
+
+        <button type="submit">Save Profile</button>
+    </form>
+    
+    <p><a href="{% url 'home' %}">Cancel</a></p>
+</body>
+</html>

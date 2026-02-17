@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeTube Home</title>
+</head>
+<body>
+    <h1>Login Successful! 🎉</h1>
+    <p>Welcome to the WeTube dashboard, {{ request.user.email }}!</p>
+
+    <br><br>
+    <a href="{% url 'profile' %}">Edit Profile</a>
+    <br><br>
+    
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+</body>
+</html>

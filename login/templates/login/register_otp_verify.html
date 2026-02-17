@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Registration</title>
+</head>
+<body>
+    <h1>Verify Your Account 📧</h1>
+    <p>We just sent a 6-digit code to your email to verify your account.</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {% if error %}<p style="color: red;">{{ error }}</p>{% endif %}
+        
+        <label>Enter 6-Digit Code:</label><br>
+        <input title="otp" type="text" name="otp" required maxlength="6"><br><br>
+        <button type="submit">Create Account</button>
+    </form>
+</body>
+</html>
